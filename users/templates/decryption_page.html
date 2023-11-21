@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Расшифровка текста из файла</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Расшифровать</button>
+</form>
+{% if decrypted_text %}
+    <p>Расшифрованный текст: {{ decrypted_text }}</p>
+{% endif %}
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+{% endblock %}

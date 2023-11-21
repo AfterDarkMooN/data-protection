@@ -1,0 +1,26 @@
+{% extends "users/base.html" %}
+{% block title %} Home Page {% endblock title%}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Добро пожаловать, {{user.first_name.title|default:'Guest'}}</h1>
+        <p class="lead">
+            Это простой текст, который написан здесь просто так. Возможно, у этого простейшего набора слов есть другое назначение, но точно не стоит искать в нём смысл. 
+            Особенно важно понимать – не стоит дочитывать весь этот абзац целиком. 
+            Ведь тогда у вас появятся сомнения по поводу смысла и назначения. А это совсем не то, чего ждёт от вас восприятие.
+        </p>
+        <hr class="my-4">
+        <p class="lead">
+            {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-lg" href="{% url 'logout' %}" role="button">Logout</a>
+                <a class="btn btn-primary btn-lg" href="{% url 'encrypt' %}" role="button">Encrypt</a>
+                <a class="btn btn-primary btn-lg" href="{% url 'decrypt' %}" role="button">Decrypt</a>
+                <a class="btn btn-primary btn-lg" href="{% url 'encrypt_file' %}" role="button">Encrypt File</a>
+                <a class="btn btn-primary btn-lg" href="{% url 'decrypt_file' %}" role="button">Decrypt File</a>
+                <a class="btn btn-primary btn-lg" href="{% url 'steganography_page' %}" role="button">Stenography</a>
+            {% else %}
+                <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Sign in</a>
+            {% endif %}
+        </p>
+    </div>
+
+{% endblock content %}

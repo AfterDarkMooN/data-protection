@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Стеганография: Метод регистров букв</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Применить</button>
+</form>
+{% if processed_text %}
+    <h3>Результат:</h3>
+    <p>{{ processed_text }}</p>
+{% endif %}
+{% endblock %}
